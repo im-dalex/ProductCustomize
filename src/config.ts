@@ -1,4 +1,4 @@
-import { ApiModel } from "@/core/api/api.interface";
+import { ApiModel } from '@/core/api/api.interface';
 
 const { BASE_URL, API_BASE_URL } = process.env;
 

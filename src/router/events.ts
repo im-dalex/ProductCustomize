@@ -1,4 +1,4 @@
-import { Router } from "vue-router";
+import { Router } from 'vue-router';
 
 export const applyGuards = (router: Router): void => {
   router.beforeEach(async (to, _, next) => {
