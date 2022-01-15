@@ -1,27 +1,27 @@
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/products",
-    name: "ProductList",
-    component: () =>
-      import(
-        /* webpackChunkName: "products" */ "@/views/product/ProductList.vue"
-      ),
+    path: '/',
+    meta: { authorization: true },
+    component: () => import('@/views/Main.vue'),
     children: [
       {
-        path: ":productId",
-        name: "ProductCustomization",
-        component: () =>
-          import(
-            /* webpackChunkName: "products" */ "@/views/product/ProductCustomization.vue"
-          ),
+        path: '',
+        name: 'ProductList',
+        component: () => import('@/views/product/ProductList.vue'),
+      },
+      {
+        path: 'product/:productId',
+        name: 'ProductCustomization',
+        props: true,
+        component: () => import('@/views/product/ProductCustomization.vue'),
       },
     ],
   },
   {
-    path: "/:pathMatch(.*)*",
-    redirect: "/products",
+    path: '/:pathMatch(.*)*',
+    redirect: '/',
   },
 ];
 

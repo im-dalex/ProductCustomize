@@ -1,14 +1,12 @@
 <template>
-  <main-wrapper />
+  <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import MainWrapper from '@/views/Main.vue';
 
 export default defineComponent({
   name: 'App',
-  components: { MainWrapper },
 });
 </script>
 
