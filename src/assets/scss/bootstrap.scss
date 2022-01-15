@@ -1,0 +1,21 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+$body-bg: #f2f2f2;
+$body-color: #000000;
+$primary: #839ad9;
+$secondary: #a1a1a1;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary
+);
+
+.btn-primary, .btn-secondary {
+  color: #ffff !important;
+}
+
+
+@import "node_modules/bootstrap/scss/bootstrap";
+

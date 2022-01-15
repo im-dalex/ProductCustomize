@@ -13,4 +13,7 @@ import '@/plugins/customily.setup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 
+// App styles
+import '@/assets/scss/styles.scss';
+
 createApp(App).use(store).use(router).mount('#app');

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="navbar navbar-dark customily-bg-theme">
+    <nav class="navbar fixed-sm-top navbar-dark customily-bg-theme">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">Welcome marti</span>
       </div>
@@ -12,7 +12,6 @@
 .navbar {
   &.customily-bg-theme {
     --bs-bg-opacity: 1;
-    background: rgb(119, 98, 226);
     background: linear-gradient(
       90deg,
       rgba(119, 98, 226, 1) 0%,
