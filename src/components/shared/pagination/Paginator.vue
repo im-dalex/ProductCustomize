@@ -31,7 +31,7 @@ export default defineComponent({
   },
   computed: {
     currentPage(): number {
-      return this.config.toCount / this.config.pageSize;
+      return this.config.toItem / this.config.pageSize;
     },
     nextDisabled(): boolean {
       return (
@@ -46,16 +46,16 @@ export default defineComponent({
     onPrevHandler(): void {
       const model = {
         ...this.config,
-        fromCount: this.config.fromCount - this.config.pageSize - 1,
-        toCount: this.config.toCount - this.config.pageSize,
+        fromCount: this.config.fromItem - this.config.pageSize - 1,
+        toCount: this.config.toItem - this.config.pageSize,
       };
       this.updateModel(model);
     },
     onNextHandler(): void {
       const model = {
         ...this.config,
-        fromCount: this.config.toCount + 1,
-        toCount: this.config.toCount + this.config.pageSize,
+        fromCount: this.config.toItem + 1,
+        toCount: this.config.toItem + this.config.pageSize,
       };
       this.updateModel(model);
     },

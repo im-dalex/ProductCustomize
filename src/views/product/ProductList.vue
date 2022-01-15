@@ -4,6 +4,11 @@
       <product-card :product="product" @try-it="tryItHandler($event, idx)" />
     </div>
   </div>
+  <pagination
+    class="d-flex justify-content-center mt-4"
+    v-model:config="pagination"
+    @page-changed="getProducts"
+  />
 </template>
 
 <script lang="ts">
@@ -13,12 +18,22 @@ import { useProductStore } from '@/modules/product/store';
 import { Product } from '@/modules/product/models/product.interface';
 import { getProducts as _getProducts } from '@/modules/product/product.service';
 import ProductCard from '@/views/product/components/ProductCard.vue';
+import Pagination from '@/components/shared/pagination/Paginator.vue';
+import { Paginator } from '@/components/shared/pagination/paginator.interface';
+
+const DEFAULT_PAGE_SIZE = 8;
 
 export default defineComponent({
   name: 'ProductList',
-  components: { ProductCard },
+  components: { ProductCard, Pagination },
   data: () => ({
     products: [] as Product[],
+    pagination: {
+      pageSize: DEFAULT_PAGE_SIZE,
+      toItem: DEFAULT_PAGE_SIZE,
+      pageCount: 0,
+      fromItem: 0,
+    } as Paginator,
   }),
   computed: {
     ...mapWritableState(useProductStore, ['selectedProduct']),
@@ -28,8 +43,15 @@ export default defineComponent({
   },
   methods: {
     async getProducts(): Promise<void> {
-      const data = await _getProducts(0, 8);
-      this.products = [...data];
+      const data = await _getProducts(
+        this.pagination.fromItem,
+        this.pagination.toItem
+      );
+      this.pagination.nextDisabled = data.length == 0;
+      this.pagination.pageCount = data.length;
+      if (!this.pagination.nextDisabled) {
+        this.products = [...data];
+      }
     },
     tryItHandler(productId: string, productIdx: number): void {
       const product = this.products[productIdx];
