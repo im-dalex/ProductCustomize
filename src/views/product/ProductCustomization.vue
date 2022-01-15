@@ -6,8 +6,8 @@
     <div class="col">
       <div class="product-customize">
         <div class="product-info">
-          <span class="fw-bold"> Producto 1 </span>
-          <span> 10/2/2020 </span>
+          <span class="fw-bold">{{ selectedProduct.name }}</span>
+          <span>{{ selectedProduct.createdDate }}</span>
         </div>
         <dynamic-form
           class="mt-4"
@@ -22,10 +22,12 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+import { mapState } from 'pinia';
 import {
   DropdownOption,
   ProductField,
 } from '@/modules/product/models/product.interface';
+import { useProductStore } from '@/modules/product/store';
 import DynamicForm from '@/views/product/components/DynamicProductForm.vue';
 
 const customilyLib = window.engraver;
@@ -42,6 +44,9 @@ export default defineComponent({
   data: () => ({
     fields: [] as ProductField[],
   }),
+  computed: {
+    ...mapState(useProductStore, ['selectedProduct']),
+  },
   async mounted() {
     await this.initProductCanvas();
   },
@@ -91,6 +96,4 @@ export default defineComponent({
     justify-content: space-between;
   }
 }
-// primary color #839ad9
-// secondary color #a1a1a1
 </style>

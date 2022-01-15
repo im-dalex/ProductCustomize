@@ -7,7 +7,7 @@
       loading="lazy"
     />
     <div class="card-body">
-      <span class="product-name">{{ product.name }}</span>
+      <span class="fw-bold">{{ product.name }}</span>
       <span class="date">{{ createdDate }}</span>
     </div>
     <div class="card-footer">
@@ -57,13 +57,8 @@ export default defineComponent({
     justify-content: space-between;
     align-items: center;
     background: #d7d7d7;
-    .product-name {
-      font-size: 16px;
-      font-weight: bold;
-      color: #000000;
-    }
     .date {
-      font-size: 14px;
+      font-size: 0.875rem;
       color: #686767;
     }
   }
