@@ -8,3 +8,15 @@ export interface Product {
   modifiedDate: Date;
   importedFrom: string;
 }
+
+export interface ProductField {
+  id: number;
+  currentFont: string;
+  fontList: DropdownOption[];
+}
+
+export interface DropdownOption {
+  id: number;
+  value: number | string;
+  label: string;
+}

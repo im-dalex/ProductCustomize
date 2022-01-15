@@ -2,6 +2,7 @@ export {};
 
 declare global {
   interface Window {
-    engraver: unknown;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    engraver: any;
   }
 }
