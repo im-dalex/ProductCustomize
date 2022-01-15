@@ -9,6 +9,12 @@ export interface Product {
   importedFrom: string;
 }
 
+export interface ProductState {
+  id: string;
+  name: string;
+  createdDate: Date | string;
+}
+
 export interface ProductField {
   id: number;
   currentFont: string;
