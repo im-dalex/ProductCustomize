@@ -7,4 +7,9 @@ const API: ApiModel = {
   TIMEOUT: 30000,
 };
 
-export { BASE_URL, API };
+const APP = {
+  GRANT_TYPE: 'password',
+  CLIENT_ID: 'all',
+};
+
+export { BASE_URL, API, APP };

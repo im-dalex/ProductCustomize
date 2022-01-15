@@ -1,10 +1,11 @@
 import { api } from '@/core/api';
-import { AuthUser, Token } from '@/modules/auth/models/auth.interface';
-import { AxiosRequestConfig } from 'axios';
+import { Token } from './models/auth.interface';
 
 const CONTROLLER = 'api/token';
 
-export const getToken = (user: AxiosRequestConfig<AuthUser>): Promise<Token> =>
-  api.post(`${CONTROLLER}`, user, {
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  });
+export const getToken = (user: URLSearchParams): Promise<Token> =>
+  api
+    .post(`${CONTROLLER}`, user, {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    })
+    .then(({ data }) => data);
