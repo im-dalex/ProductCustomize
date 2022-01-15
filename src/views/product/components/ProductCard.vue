@@ -28,6 +28,7 @@ import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
   name: 'ProductList',
+  emits: ['try-it'],
   props: {
     product: {
       type: Object as PropType<Product>,
