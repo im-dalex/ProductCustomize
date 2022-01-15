@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
-import { getToken } from '@/modules/auth/auth.service';
 import { APP } from '@/config';
-import { Token } from '../models/auth.interface';
+import { getToken } from '@/modules/auth/auth.service';
+import { Token } from '@/modules/auth/models/auth.interface';
 
 export const useAuthStore = defineStore('auth', {
+  persist: true,
   state: () => ({
     token: {} as Token,
   }),

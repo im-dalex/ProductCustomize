@@ -7,7 +7,6 @@ export const applyGuards = (router: Router): void => {
     if (to.meta.authorization && !authStore.isAuthenticated) {
       await authStore.login();
     }
-    console.log(to);
     return next();
   });
 };
