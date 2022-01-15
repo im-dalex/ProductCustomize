@@ -6,8 +6,16 @@ const CONTROLLER = 'api/Product';
 export const getProducts = (
   from: number,
   to: number,
-  searchString?: string
+  searchString = ''
 ): Promise<Product[]> =>
-  api.get(`${CONTROLLER}/GetProductsFromTo`, {
-    params: { searchString, from, to },
-  });
+  api
+    .get(`${CONTROLLER}/GetProductsFromTo`, {
+      params: { searchString, from, to },
+    })
+    .then(({ data, config }) => {
+      const { baseURL } = config;
+      return data.map((product: Product) => ({
+        ...product,
+        imagePath: `${baseURL}${product.imagePath}`,
+      }));
+    });
