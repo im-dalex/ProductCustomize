@@ -1,5 +1,5 @@
 export interface Product {
-  ProductId: number;
+  productId: number;
   id: string;
   name: string;
   thumbnailPath: string;
