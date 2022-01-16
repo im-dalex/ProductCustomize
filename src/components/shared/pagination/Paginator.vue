@@ -44,18 +44,18 @@ export default defineComponent({
   },
   methods: {
     onPrevHandler(): void {
-      const model = {
+      const model: Paginator = {
         ...this.config,
-        fromCount: this.config.fromItem - this.config.pageSize - 1,
-        toCount: this.config.toItem - this.config.pageSize,
+        fromItem: this.config.fromItem - this.config.pageSize - 1,
+        toItem: this.config.toItem - this.config.pageSize,
       };
       this.updateModel(model);
     },
     onNextHandler(): void {
-      const model = {
+      const model: Paginator = {
         ...this.config,
-        fromCount: this.config.toItem + 1,
-        toCount: this.config.toItem + this.config.pageSize,
+        fromItem: this.config.toItem + 1,
+        toItem: this.config.toItem + this.config.pageSize,
       };
       this.updateModel(model);
     },
