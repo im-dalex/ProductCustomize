@@ -17,6 +17,11 @@
         />
       </div>
     </div>
+    <div class="col">
+      <button type="button" class="btn btn-secondary rounded-0" @click="goBack">
+        Back
+      </button>
+    </div>
   </div>
 </template>
 
@@ -81,6 +86,9 @@ export default defineComponent({
     setFont(option: number, fieldId: string): void {
       customilyLib.setFont(fieldId, option);
     },
+    goBack() {
+      this.$router.go(-1);
+    },
   },
 });
 </script>
@@ -94,6 +102,14 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+}
+.btn-secondary {
+  width: 40%;
+}
+@media only screen and (max-width: 768px) {
+  .btn-secondary {
+    width: 100%;
   }
 }
 </style>

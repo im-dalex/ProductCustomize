@@ -5,6 +5,7 @@
     </div>
   </div>
   <pagination
+    v-if="products.length"
     class="d-flex justify-content-center mt-4"
     v-model:config="pagination"
     @page-changed="getProducts"
