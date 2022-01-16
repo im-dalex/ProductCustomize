@@ -21,6 +21,7 @@ import { getProducts as _getProducts } from '@/modules/product/product.service';
 import ProductCard from '@/views/product/components/ProductCard.vue';
 import Pagination from '@/components/shared/pagination/Paginator.vue';
 import { Paginator } from '@/components/shared/pagination/paginator.interface';
+import { formatDate } from '@/plugins/filters';
 
 const DEFAULT_PAGE_SIZE = 8;
 
@@ -59,7 +60,7 @@ export default defineComponent({
       this.selectedProduct = {
         id: productId,
         name: product.name,
-        createdDate: product.createdDate.toString(),
+        createdDate: formatDate(product.createdDate),
       };
 
       this.$router.push({

@@ -24,6 +24,7 @@
 
 <script lang="ts">
 import { Product } from '@/modules/product/models/product.interface';
+import { formatDate } from '@/plugins/filters';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
@@ -36,9 +37,8 @@ export default defineComponent({
     },
   },
   computed: {
-    createdDate(): string {
-      const date = new Date(this.product?.createdDate);
-      return date.toLocaleDateString('en-GB');
+    createdDate() {
+      return formatDate(this.product.createdDate);
     },
   },
   methods: {
