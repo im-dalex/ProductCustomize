@@ -1,4 +1,5 @@
-export const date = (value: string | Date): string => {
-  const dateVal = new Date(value);
-  return dateVal.toLocaleDateString('en-GB');
+import moment from 'moment';
+
+export const formatDate = (value: string | Date): string => {
+  return moment(value).format('DD/MM/YYYY').toString();
 };

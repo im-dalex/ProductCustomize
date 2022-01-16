@@ -4,8 +4,8 @@ export interface Product {
   name: string;
   thumbnailPath: string;
   imagePath: string;
-  createdDate: Date;
-  modifiedDate: Date;
+  createdDate: string;
+  modifiedDate: string;
   importedFrom: string;
 }
 
