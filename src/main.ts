@@ -2,8 +2,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-
-// Store
 import store from './store';
 
 // Plugins
