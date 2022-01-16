@@ -22,6 +22,7 @@
         <select
           class="form-select"
           aria-label="Font Selector"
+          :value="initialFont(field)"
           @change="fontEmitter($event.target.value, field.id)"
         >
           <option
@@ -48,6 +49,14 @@ export default defineComponent({
     fields: {
       type: Array as PropType<Array<ProductField[]>>,
       required: true,
+    },
+  },
+  computed: {
+    initialFont() {
+      return (field: ProductField) => {
+        const font = field.fontList.find((f) => f.value === field.currentFont);
+        return font?.id;
+      };
     },
   },
   methods: {
