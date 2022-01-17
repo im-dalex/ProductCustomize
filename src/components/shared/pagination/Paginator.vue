@@ -1,15 +1,23 @@
 <template>
   <nav aria-label="Page Paginator">
     <ul class="pagination">
-      <li class="page-item" :class="{ disabled: prevDisabled }">
+      <li
+        class="page-item"
+        data-test="prevBtn"
+        :class="{ disabled: prevDisabled }"
+      >
         <a class="page-link cursor-pointer" @click="onPrevHandler">Previous</a>
       </li>
-      <li class="page-item disabled">
+      <li data-test="pageNumber" class="page-item disabled">
         <span class="page-link">
           {{ currentPage }}
         </span>
       </li>
-      <li class="page-item" :class="{ disabled: nextDisabled }">
+      <li
+        class="page-item"
+        data-test="nextBtn"
+        :class="{ disabled: nextDisabled }"
+      >
         <a class="page-link cursor-pointer" @click="onNextHandler"> Next </a>
       </li>
     </ul>
