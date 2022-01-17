@@ -4,6 +4,7 @@ import ProductList from '@/views/product/ProductList.vue';
 import ProductCard from '@/views/product/components/ProductCard.vue';
 import { createTestingPinia } from '@pinia/testing';
 import { Wrapper } from 'tests/utils/VueWrapper';
+import { Vue3Mq } from 'vue3-mq';
 
 jest.mock('@/modules/product/product.service', () => {
   return {
@@ -117,7 +118,13 @@ describe('ProductList', () => {
 
   beforeEach(() => {
     mountFunc = (options) => {
-      return shallowMount(ProductList, { ...options });
+      return shallowMount(ProductList, {
+        ...options,
+        global: {
+          ...options?.global,
+          plugins: [Vue3Mq, createTestingPinia()],
+        },
+      });
     };
   });
 
@@ -139,7 +146,6 @@ describe('ProductList', () => {
   it('navigates to product customization view', async () => {
     const wrapper = mountFunc({
       global: {
-        plugins: [createTestingPinia()],
         mocks: {
           $router: mockRouter,
         },

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCustomization gets the product fields 1`] = `
+<div class="row mx-0 row-cols-1 row-cols-md-2 g-4 gx-md-5">
+  <div class="col"><canvas id="product-preview"></canvas></div>
+  <div class="col">
+    <div class="product-customize">
+      <div class="product-info"><span class="fw-bold"></span><span></span></div>
+      <dynamic-form-stub fields="[object Object]" class="mt-4"></dynamic-form-stub>
+    </div>
+  </div>
+  <div class="col"><button type="button" class="btn btn-secondary rounded-0"> Back </button></div>
+</div>
+`;

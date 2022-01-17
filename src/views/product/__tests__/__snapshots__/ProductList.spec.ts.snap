@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductList renders the products 1`] = `
+<div class="product-list row row-cols-1 row-cols-md-2 row-cols-lg-4 mx-0 g-4">
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+  <div class="col">
+    <product-card-stub product="[object Object]"></product-card-stub>
+  </div>
+</div>
+<mq-responsive-stub landscape="false" portrait="false" dark="false" light="false" tag="div" listtag="div" group="false"></mq-responsive-stub>
+`;
