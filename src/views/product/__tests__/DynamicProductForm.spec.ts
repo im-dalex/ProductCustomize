@@ -2,6 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 import DynamicProductForm from '@/views/product/components/DynamicProductForm.vue';
 import {
   DropdownOption,
+  FieldUpdate,
   ProductField,
 } from '@/modules/product/models/product.interface';
 import { Wrapper } from 'tests/utils/VueWrapper';
@@ -52,21 +53,29 @@ describe('DynamicProductForm', () => {
 
   it('emits the text field value when it changes', () => {
     const wrapper = mountFunc();
+    const mockOption: FieldUpdate = {
+      fieldId: 1,
+      value: 'a',
+    };
 
-    wrapper.find('input').setValue('a');
+    wrapper.find('input').setValue(mockOption.value);
     const inputEvents = wrapper.emitted('text-change') || [];
 
     expect(inputEvents).toHaveLength(1);
-    expect(inputEvents[0]).toEqual(['a', 1]);
+    expect(inputEvents[0]).toEqual([mockOption]);
   });
 
   it('emits the font value when it changes', () => {
     const wrapper = mountFunc();
+    const mockOption: FieldUpdate = {
+      fieldId: 1,
+      value: 2,
+    };
 
-    wrapper.find('select').setValue(2);
+    wrapper.find('select').setValue(mockOption.value);
     const dropdownEvents = wrapper.emitted('font-change') || [];
 
     expect(dropdownEvents).toHaveLength(1);
-    expect(dropdownEvents[0]).toEqual([2, 1]);
+    expect(dropdownEvents[0]).toEqual([mockOption]);
   });
 });
