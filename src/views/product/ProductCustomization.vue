@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { mapState } from 'pinia';
+import { mapState, mapWritableState } from 'pinia';
 import {
   DropdownOption,
   FieldUpdate,
@@ -35,6 +35,7 @@ import {
 } from '@/modules/product/models/product.interface';
 import { useProductStore } from '@/modules/product/store';
 import DynamicForm from '@/views/product/components/DynamicProductForm.vue';
+import { useAppStore } from '@/modules/app/store';
 
 export default defineComponent({
   name: 'ProductCustomization',
@@ -50,6 +51,7 @@ export default defineComponent({
   }),
   computed: {
     ...mapState(useProductStore, ['selectedProduct']),
+    ...mapWritableState(useAppStore, ['isLoading']),
     customilyLib() {
       return window.engraver;
     },
@@ -59,6 +61,7 @@ export default defineComponent({
   },
   methods: {
     async initProductCanvas(): Promise<void> {
+      this.isLoading = true;
       this.customilyLib.init('product-preview');
       await this.customilyLib.setProduct(this.productId);
       const { preview: product } = this.customilyLib.currentProduct;
@@ -69,6 +72,7 @@ export default defineComponent({
         fontList: this.mapDropdownOptions(field.fontsMap),
         currentFont: field.fontPath,
       }));
+      this.isLoading = false;
     },
     mapDropdownOptions(strOptions: string): DropdownOption[] {
       const options = JSON.parse(strOptions);
