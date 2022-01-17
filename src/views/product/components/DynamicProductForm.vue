@@ -80,11 +80,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.dynamic-form {
-  .field-wrapper {
-    text-align: left;
-  }
-}
-</style>
