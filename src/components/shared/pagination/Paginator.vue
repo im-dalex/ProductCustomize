@@ -54,7 +54,7 @@ export default defineComponent({
     onPrevHandler(): void {
       const model: Paginator = {
         ...this.config,
-        fromItem: this.config.fromItem - this.config.pageSize - 1,
+        fromItem: Math.max(0, this.config.fromItem - this.config.pageSize - 1),
         toItem: this.config.toItem - this.config.pageSize,
       };
       this.updateModel(model);
