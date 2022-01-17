@@ -39,7 +39,10 @@
 </template>
 
 <script lang="ts">
-import { ProductField } from '@/modules/product/models/product.interface';
+import {
+  FieldUpdate,
+  ProductField,
+} from '@/modules/product/models/product.interface';
 import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
@@ -61,10 +64,18 @@ export default defineComponent({
   },
   methods: {
     inputEmitter(text: string, inputId: number): void {
-      this.$emit('text-change', text, inputId);
+      const params: FieldUpdate = {
+        fieldId: inputId,
+        value: text,
+      };
+      this.$emit('text-change', params);
     },
     fontEmitter(option: number, inputId: number): void {
-      this.$emit('font-change', +option, inputId);
+      const params: FieldUpdate = {
+        fieldId: inputId,
+        value: +option,
+      };
+      this.$emit('font-change', params);
     },
   },
 });

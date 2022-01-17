@@ -30,12 +30,11 @@ import { defineComponent, PropType } from 'vue';
 import { mapState } from 'pinia';
 import {
   DropdownOption,
+  FieldUpdate,
   ProductField,
 } from '@/modules/product/models/product.interface';
 import { useProductStore } from '@/modules/product/store';
 import DynamicForm from '@/views/product/components/DynamicProductForm.vue';
-
-const customilyLib = window.engraver;
 
 export default defineComponent({
   name: 'ProductCustomization',
@@ -51,15 +50,18 @@ export default defineComponent({
   }),
   computed: {
     ...mapState(useProductStore, ['selectedProduct']),
+    customilyLib() {
+      return window.engraver;
+    },
   },
   async mounted() {
     await this.initProductCanvas();
   },
   methods: {
     async initProductCanvas(): Promise<void> {
-      customilyLib.init('product-preview');
-      await customilyLib.setProduct(this.productId);
-      const { preview: product } = customilyLib.currentProduct;
+      this.customilyLib.init('product-preview');
+      await this.customilyLib.setProduct(this.productId);
+      const { preview: product } = this.customilyLib.currentProduct;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.fields = product.textsPreview.map((field: any) => ({
@@ -80,11 +82,11 @@ export default defineComponent({
       const fontType = font.split('/').pop();
       return fontType?.split('-').slice(0, 2).join(' ');
     },
-    setText(text: string, fieldId: string): void {
-      customilyLib.setText(fieldId, text);
+    setText(option: FieldUpdate): void {
+      this.customilyLib.setText(option.fieldId, option.value);
     },
-    setFont(option: number, fieldId: string): void {
-      customilyLib.setFont(fieldId, option);
+    setFont(option: FieldUpdate): void {
+      this.customilyLib.setFont(option.fieldId, option.value);
     },
     goBack() {
       this.$router.go(-1);

@@ -1,5 +1,5 @@
 export interface Product {
-  productId: number;
+  ProductId: number;
   id: string;
   name: string;
   thumbnailPath: string;
@@ -25,4 +25,9 @@ export interface DropdownOption {
   id: number;
   value: number | string;
   label: string;
+}
+
+export interface FieldUpdate {
+  fieldId: number;
+  value: string | number;
 }
