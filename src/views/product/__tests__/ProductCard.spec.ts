@@ -1,6 +1,7 @@
-import { shallowMount, VueWrapper } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import ProductCard from '@/views/product/components/ProductCard.vue';
 import { Product } from '@/modules/product/models/product.interface';
+import { Wrapper } from 'tests/utils/VueWrapper';
 
 const mockProduct: Product = {
   ProductId: 144231,
@@ -16,10 +17,10 @@ const mockProduct: Product = {
 };
 
 describe('ProductCard', () => {
-  let mountFunc: (options?: any) => VueWrapper<any>;
+  let mountFunc: Wrapper;
 
   beforeEach(() => {
-    mountFunc = (options): VueWrapper => {
+    mountFunc = (options) => {
       return shallowMount(ProductCard, {
         ...options,
         props: { product: mockProduct },

@@ -1,8 +1,9 @@
-import { shallowMount, VueWrapper } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import flushPromises from 'flush-promises';
 import ProductList from '@/views/product/ProductList.vue';
 import ProductCard from '@/views/product/components/ProductCard.vue';
 import { createTestingPinia } from '@pinia/testing';
+import { Wrapper } from 'tests/utils/VueWrapper';
 
 jest.mock('@/modules/product/product.service', () => {
   return {
@@ -112,10 +113,10 @@ jest.mock('@/modules/product/product.service', () => {
 const mockRouter = { push: jest.fn() };
 
 describe('ProductList', () => {
-  let mountFunc: (options?: any) => VueWrapper<any>;
+  let mountFunc: Wrapper;
 
   beforeEach(() => {
-    mountFunc = (options): VueWrapper => {
+    mountFunc = (options) => {
       return shallowMount(ProductList, { ...options });
     };
   });
@@ -124,7 +125,7 @@ describe('ProductList', () => {
     const wrapper = mountFunc();
     await flushPromises();
     const products = wrapper.vm.products;
-    expect(products.length > 0).toBeTruthy();
+    expect(products.length).toBeGreaterThan(0);
   });
 
   it('renders the products', async () => {

@@ -1,9 +1,10 @@
-import { shallowMount, VueWrapper } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import DynamicProductForm from '@/views/product/components/DynamicProductForm.vue';
 import {
   DropdownOption,
   ProductField,
 } from '@/modules/product/models/product.interface';
+import { Wrapper } from 'tests/utils/VueWrapper';
 
 const mockFields: ProductField[] = [
   {
@@ -28,10 +29,10 @@ const mockFields: ProductField[] = [
 ];
 
 describe('DynamicProductForm', () => {
-  let mountFunc: (options?: any) => VueWrapper<any>;
+  let mountFunc: Wrapper;
 
   beforeEach(() => {
-    mountFunc = (options): VueWrapper => {
+    mountFunc = (options) => {
       return shallowMount(DynamicProductForm, {
         ...options,
         props: { fields: mockFields },
