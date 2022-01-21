@@ -1,6 +1,6 @@
 # Product Customize App
 
-This repo contains an Product Customization App, build in Vue 3, with component tests written with vue-test-utils and Jest, and using Pinia Store for state management.
+This repo contains an Product Customization App, builded in Vue 3, components test written using vue-test-utils and Jest, and using Pinia Store for state management.
 
 ### [Online Demo](https://product-customize.vercel.app/)
 
