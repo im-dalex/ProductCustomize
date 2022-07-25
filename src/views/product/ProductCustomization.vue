@@ -14,6 +14,7 @@
           :fields="fields"
           @text-change="setText"
           @font-change="setFont"
+          @img-change="setImg"
         />
       </div>
     </div>
@@ -30,6 +31,7 @@ import { defineComponent, PropType } from 'vue';
 import { mapState, mapWritableState } from 'pinia';
 import {
   DropdownOption,
+  FieldType,
   FieldUpdate,
   ProductField,
 } from '@/modules/product/models/product.interface';
@@ -66,12 +68,25 @@ export default defineComponent({
       await this.customilyLib.setProduct(this.productId);
       const { preview: product } = this.customilyLib.currentProduct;
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this.fields = product.textsPreview.map((field: any) => ({
-        id: field.id,
-        fontList: this.mapDropdownOptions(field.fontsMap),
-        currentFont: field.fontPath,
-      }));
+      this.fields = product.textsPreview.map(
+        (field): ProductField => ({
+          id: field.id,
+          type: FieldType.font,
+          currentFont: field.fontPath,
+          fontList: this.mapDropdownOptions(field.fontsMap),
+        })
+      );
+
+      for (const image of product.imagePlaceHoldersPreview) {
+        if (!image.dynamicImagesPath) continue;
+
+        this.fields.push({
+          id: image.id,
+          type: FieldType.image,
+          imgOptions: image.dynamicImagesPath,
+        });
+      }
+
       this.isLoading = false;
     },
     mapDropdownOptions(strOptions: string): DropdownOption[] {
@@ -91,6 +106,9 @@ export default defineComponent({
     },
     setFont(option: FieldUpdate): void {
       this.customilyLib.setFont(option.fieldId, option.value);
+    },
+    setImg(option: FieldUpdate): void {
+      this.customilyLib.setPresetImage(option.fieldId, option.value);
     },
     goBack() {
       this.$router.go(-1);

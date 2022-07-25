@@ -15,10 +15,17 @@ export interface ProductState {
   createdDate: Date | string;
 }
 
+export enum FieldType {
+  font,
+  image,
+}
+
 export interface ProductField {
   id: number;
-  currentFont: string;
-  fontList: DropdownOption[];
+  type: FieldType;
+  currentFont?: string;
+  fontList?: DropdownOption[];
+  imgOptions?: Map<number, string>[];
 }
 
 export interface DropdownOption {
