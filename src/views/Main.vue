@@ -1,5 +1,6 @@
 <template>
   <the-header />
+  <Breadcumb />
   <main class="page-content">
     <loading
       v-model:active="isLoading"
@@ -20,10 +21,11 @@ import { useAppStore } from '@/modules/app/store';
 
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import Breadcumb from '@/components/Breadcumb.vue';
 
 export default defineComponent({
   name: 'MainWrapper',
-  components: { TheHeader, Loading },
+  components: { Breadcumb, TheHeader, Loading },
   computed: {
     ...mapState(useAppStore, ['isLoading']),
   },

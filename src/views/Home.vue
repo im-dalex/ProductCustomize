@@ -15,7 +15,7 @@ export default defineComponent({
   name: 'Home',
   methods: {
     goToProducts(): void {
-      this.$router.push({ name: 'ProductList' });
+      // this.$router.push({ name: 'ProductList' });
     },
   },
 });
