@@ -9,12 +9,14 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'Home',
   methods: {
     goToProducts(): void {
       this.$router.push({ name: 'ProductList' });
     },
   },
-};
+});
 </script>
