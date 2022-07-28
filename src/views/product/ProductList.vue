@@ -1,4 +1,11 @@
 <template>
+  <button
+    type="button"
+    class="btn btn-primary w-100 rounded-0 mb-3"
+    @click="goToHome"
+  >
+    Back
+  </button>
   <div class="product-list row row-cols-1 row-cols-md-2 row-cols-lg-4 mx-0 g-4">
     <div v-for="(product, idx) in products" :key="product.id" class="col">
       <product-card :product="product" @try-it="tryItHandler($event, idx)" />
@@ -90,6 +97,9 @@ export default defineComponent({
         name: 'ProductCustomization',
         params: { productId },
       });
+    },
+    goToHome() {
+      this.$router.go(-1);
     },
     resetPagination() {
       this.products = [];
